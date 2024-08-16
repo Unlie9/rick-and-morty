@@ -30,4 +30,3 @@ class CharacterListView(generics.ListAPIView):
     serializer_class = CharacterSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ["name"]
-

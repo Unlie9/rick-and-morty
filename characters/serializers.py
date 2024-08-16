@@ -9,6 +9,7 @@ class CharacterSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "api_id",
+            "name",
             "status",
             "species",
             "gender",
