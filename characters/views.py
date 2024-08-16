@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -23,3 +23,8 @@ def get_random_character_view(request: Request) -> Response:
     random_character = get_random_obj_from_queryset(Character.objects.all())
     serializer = CharacterSerializer(random_character)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class CharacterListView(generics.ListAPIView):
+    queryset = Character.objects.all()
+    serializer_class = CharacterSerializer
