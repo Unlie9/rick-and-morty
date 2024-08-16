@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "characters",
     "rest_framework",
     "django_filters",
+    "drf_spectacular"
 ]
 
 MIDDLEWARE = [
@@ -125,8 +126,23 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+RICK_AND_MORTY_API_CHARACTERS_URL = "https://rickandmortyapi.com/api/character"
+
+
 REST_FRAMEWORK = {
-    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"]
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema"
 }
 
-RICK_AND_MORTY_API_CHARACTERS_URL = "https://rickandmortyapi.com/api/character"
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Rick and Morty API",
+    "DESCRIPTION": "Go in interesting world of Rick and Morty",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SWAGGER_UI_SETTINGS": {
+        "deepLinking": True,
+        "defaultModelRendering": "model",
+        "defaultModelsExpandDepth": 2,
+        "defaultModelExpandDepth": 2,
+    }
+}
