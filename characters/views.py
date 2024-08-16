@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import status, generics
+from rest_framework import status, generics, filters
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -28,3 +28,6 @@ def get_random_character_view(request: Request) -> Response:
 class CharacterListView(generics.ListAPIView):
     queryset = Character.objects.all()
     serializer_class = CharacterSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ["name"]
+
